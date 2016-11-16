@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.views;
 import javax.swing.ListSelectionModel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
@@ -25,9 +25,6 @@ import java.awt.SystemColor;
 import java.awt.Frame;
 import java.awt.Dimension;
 import javax.swing.border.LineBorder;
-
-import gui.managers.LangVersMgrView;
-
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
@@ -1064,16 +1061,16 @@ public class MainView extends javax.swing.JFrame {
     }
     
     private void openSettings() {
-        new gui.settings.SettingsView().setVisible(true);
+        new gui.views.SettingsView().setVisible(true);
     }
     
     private boolean requestAuth() {
-    	new gui.user.AuthForm().setVisible(true);
+    	new gui.dialogs.AuthForm().setVisible(true);
     	return true;
     }
     
     private void openUserConfig(int tab) {
-    	new gui.managers.UserMgrView(tab).setVisible(true);
+    	new gui.views.UserMgrView(tab).setVisible(true);
     }
     
     private javax.swing.JFrame columnEditor;

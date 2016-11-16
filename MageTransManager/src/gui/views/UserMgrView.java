@@ -1,4 +1,4 @@
-package gui.managers;
+package gui.views;
 
 
 

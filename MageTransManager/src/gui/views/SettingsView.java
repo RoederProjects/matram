@@ -1,4 +1,4 @@
-package gui.settings;
+package gui.views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -371,7 +371,7 @@ public class SettingsView extends JFrame {
 	}
 	
 	private void openFileChooser() {
-		gui.settings.dialogs.FileChooser fileChooser2 = new gui.settings.dialogs.FileChooser();
+		gui.dialogs.FileChooser fileChooser2 = new gui.dialogs.FileChooser();
 		fileChooser2.setVisible(true);
 	}
 }
