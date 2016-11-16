@@ -4,10 +4,10 @@ public class Run {
 	
 	public static void main(String[] args) {
 		
-		gui.user.AuthForm login = new gui.user.AuthForm();
+		gui.dialogs.AuthForm login = new gui.dialogs.AuthForm();
 		login.setVisible(true);
 		if (login.credCheck()) {
-			new gui.MainView().setVisible(true);
+			new gui.views.MainView().setVisible(true);
 		}
 	}
 
