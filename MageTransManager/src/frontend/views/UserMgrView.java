@@ -1,4 +1,4 @@
-package gui.views;
+package frontend.views;
 
 
 

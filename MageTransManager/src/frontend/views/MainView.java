@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.views;
+package frontend.views;
 import javax.swing.ListSelectionModel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
@@ -1061,16 +1061,16 @@ public class MainView extends javax.swing.JFrame {
     }
     
     private void openSettings() {
-        new gui.views.SettingsView().setVisible(true);
+        new frontend.views.SettingsView().setVisible(true);
     }
     
     private boolean requestAuth() {
-    	new gui.dialogs.AuthForm().setVisible(true);
+    	new frontend.forms.AuthForm().setVisible(true);
     	return true;
     }
     
     private void openUserConfig(int tab) {
-    	new gui.views.UserMgrView(tab).setVisible(true);
+    	new frontend.views.UserMgrView(tab).setVisible(true);
     }
     
     private javax.swing.JFrame columnEditor;

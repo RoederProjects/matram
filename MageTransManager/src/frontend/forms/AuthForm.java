@@ -1,4 +1,4 @@
-package gui.dialogs;
+package frontend.forms;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
