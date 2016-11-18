@@ -32,7 +32,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-public class LangVersMgrView extends JFrame {
+public class ItemTypeMgrView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtGerman;
@@ -41,7 +41,7 @@ public class LangVersMgrView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LangVersMgrView() {
+	public ItemTypeMgrView() {
 		setTitle("Language Version Editor");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -28,7 +28,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.DefaultComboBoxModel;
 
-public class TransEditorView extends JFrame {
+public class ItemEditorView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -38,7 +38,7 @@ public class TransEditorView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TransEditorView() {
+	public ItemEditorView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 681, 762);
 		contentPane = new JPanel();
@@ -477,7 +477,7 @@ public class TransEditorView extends JFrame {
 		JPanel pnl_format = new JPanel();
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(TransEditorView.class.getResource("/res/icon_text-bold.png")));
+		btnNewButton.setIcon(new ImageIcon(ItemEditorView.class.getResource("/res/icon_text-bold.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {

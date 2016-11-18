@@ -1,6 +1,6 @@
-package units.bricks;
+package core.entities.bricks;
 
-public class LangVersion {
+public class ItemType {
 	
 	private int countryCodeID;
 	private String countryCode;
