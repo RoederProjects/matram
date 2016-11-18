@@ -1053,11 +1053,11 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void openTransEditorView() {
-    	new TransEditorView().setVisible(true);
+    	new ItemEditorView().setVisible(true);
     }
 
     private void openDbEditorView() {
-    	new LangVersMgrView().setVisible(true);
+    	new ItemTypeMgrView().setVisible(true);
     }
     
     private void openSettings() {

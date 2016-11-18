@@ -1,10 +1,10 @@
-package units.bricks;
+package core.entities.bricks;
 
 import java.io.File;
 
 public class Item extends ItemGroup {
 	
-	private LangVersion langVersion;
+	private ItemType langVersion;
 	private String text;
 	private String textHistoryFirst;
 	private String textHistorySecond;

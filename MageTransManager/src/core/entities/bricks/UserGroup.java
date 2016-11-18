@@ -1,4 +1,4 @@
-package units.bricks;
+package core.entities.bricks;
 
 public class UserGroup {
 
