@@ -1,4 +1,4 @@
-package core.entities.organs;
+package core.entities.service;
 
 public class SqlReader {
 

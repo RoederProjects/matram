@@ -1,4 +1,4 @@
-package gui.views;
+package frontend.views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +29,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.TitledBorder;
 
 public class SettingsView extends JFrame {
 
@@ -241,7 +242,7 @@ public class SettingsView extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 		
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("HTML Converter", null, panel_3, null);
+		tabbedPane.addTab("Conversion", null, panel_3, null);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -318,7 +319,10 @@ public class SettingsView extends JFrame {
 		JPanel panel_1 = new JPanel();
 		
 		JPanel panel_7 = new JPanel();
-		tabbedPane.addTab("Exporter", null, panel_7, null);
+		tabbedPane.addTab("Export", null, panel_7, null);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "CSV", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		JLabel lblSeperator = new JLabel("Seperator");
 		
@@ -328,23 +332,34 @@ public class SettingsView extends JFrame {
 		gl_panel_7.setHorizontalGroup(
 			gl_panel_7.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_7.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblSeperator)
-					.addGap(18)
-					.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					
-					.addContainerGap(357, Short.MAX_VALUE))
+					.addGap(10)
+					.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 406, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_panel_7.setVerticalGroup(
 			gl_panel_7.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_7.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel_7.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblSeperator)
-						.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					
-					.addContainerGap(364, Short.MAX_VALUE))
+					.addGap(11)
+					.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
 		);
+		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
+		gl_panel_6.setHorizontalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addGap(10)
+					.addComponent(lblSeperator)
+					.addGap(10)
+					.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_panel_6.setVerticalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addGap(14)
+					.addComponent(lblSeperator))
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addGap(11)
+					.addComponent(comboBox_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		);
+		panel_6.setLayout(gl_panel_6);
 		panel_7.setLayout(gl_panel_7);
 		
 		JPanel panel_5 = new JPanel();
@@ -367,11 +382,14 @@ public class SettingsView extends JFrame {
 					.addContainerGap(373, Short.MAX_VALUE))
 		);
 		panel_5.setLayout(gl_panel_5);
+		
+		JPanel panel_8 = new JPanel();
+		tabbedPane.addTab("Backup", null, panel_8, null);
 		contentPane.setLayout(gl_contentPane);
 	}
 	
 	private void openFileChooser() {
-		gui.dialogs.FileChooser fileChooser2 = new gui.dialogs.FileChooser();
+		frontend.dialogs.FileChooser fileChooser2 = new frontend.dialogs.FileChooser();
 		fileChooser2.setVisible(true);
 	}
 }
