@@ -12,5 +12,7 @@ public class Item extends ItemGroup {
 	private File attachedScreens; /** IMG-file to show usage in shops **/
 	private int reviewStatus;
 	
-	
+	public String getText() {
+		return this.text;
+	}
 }
