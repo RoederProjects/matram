@@ -1,7 +1,7 @@
 package frontend.handler;
 
-import frontend.views.ItemTypeMgrView;
+import frontend.views.ItemTypeEditorView;
 
-public class ItemTypeMgrHandler extends ItemTypeMgrView {
+public class ItemTypeMgrHandler extends ItemTypeEditorView {
 
 }
