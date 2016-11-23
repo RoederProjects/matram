@@ -2,7 +2,7 @@ package core.entities.bricks;
 
 import java.io.File;
 
-public class Item extends ItemGroup {
+public class Item extends GroupItem {
 	
 	private ItemType langVersion;
 	private String text;

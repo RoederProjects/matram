@@ -1,4 +1,4 @@
-package core.entities.service;
+package core.entities.utils;
 
 public abstract class CsvWriter {
 

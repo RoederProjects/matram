@@ -27,7 +27,7 @@ import java.awt.Dimension;
 import javax.swing.border.LineBorder;
 
 import core.entities.bricks.Item;
-import core.entities.bricks.ItemGroup;
+import core.entities.bricks.GroupItem;
 import core.entities.bricks.ItemType;
 
 import java.awt.Component;
