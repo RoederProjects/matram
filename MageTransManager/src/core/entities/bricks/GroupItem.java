@@ -1,6 +1,6 @@
 package core.entities.bricks;
 
-public class ItemGroup {
+public class GroupItem {
 
 	private String itemIdentifier;
 	private ItemCategory itemCategory;
