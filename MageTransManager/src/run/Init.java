@@ -6,7 +6,7 @@ public class Init {
 		frontend.forms.AuthForm login = new frontend.forms.AuthForm();
 		login.setVisible(true);
 		if (login.credCheck()) {
-			new frontend.views.MainView().setVisible(true);
+			new frontend.views.MainView_old().setVisible(true);
 		}
 	}
 }
