@@ -40,6 +40,14 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.JSeparator;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.util.Locale.Category;
+import java.awt.Dimension;
+import javax.swing.Box;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 public class MainView extends frontend.handler.MainHandler {
 
@@ -76,6 +84,36 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenu mnStart = new JMenu("Start");
 		menuBar.add(mnStart);
 		
+		JMenu mnExport = new JMenu("Export");
+		mnStart.add(mnExport);
+		
+		JMenuItem mntmcsv = new JMenuItem(".csv");
+		mnExport.add(mntmcsv);
+		
+		JMenu mnPublish = new JMenu("Push to");
+		mnStart.add(mnPublish);
+		
+		JMenu mntmMagentopublisher = new JMenu("Magento");
+		mnPublish.add(mntmMagentopublisher);
+		
+		JMenuItem mntmLive = new JMenuItem("Live");
+		mntmMagentopublisher.add(mntmLive);
+		
+		JMenuItem mntmTest = new JMenuItem("Test");
+		mntmMagentopublisher.add(mntmTest);
+		
+		JSeparator separator = new JSeparator();
+		mnStart.add(separator);
+		
+		JMenuItem mntmSearch = new JMenuItem("Search");
+		mnStart.add(mntmSearch);
+		
+		JSeparator separator_1 = new JSeparator();
+		mnStart.add(separator_1);
+		
+		JMenuItem mntmExit = new JMenuItem("Exit");
+		mnStart.add(mntmExit);
+		
 		JMenu mnEdit = new JMenu("Edit");
 		menuBar.add(mnEdit);
 		
@@ -97,6 +135,43 @@ public class MainView extends frontend.handler.MainHandler {
 			}
 		});
 		mnEdit.add(mntmNewMenuItem_2);
+		
+		JMenu mnView = new JMenu("View");
+		menuBar.add(mnView);
+		
+		JMenu mnToolbar = new JMenu("Toolbars");
+		mnView.add(mnToolbar);
+		
+		JCheckBoxMenuItem chckbxmntmItemTypes = new JCheckBoxMenuItem("Item Types");
+		mnToolbar.add(chckbxmntmItemTypes);
+		
+		JCheckBoxMenuItem chckbxmntmItemCategories = new JCheckBoxMenuItem("Item Categories");
+		mnToolbar.add(chckbxmntmItemCategories);
+		
+		JCheckBoxMenuItem chckbxmntmItemSearch = new JCheckBoxMenuItem("Search Field");
+		mnToolbar.add(chckbxmntmItemSearch);
+		
+		JMenu mnItemTypes = new JMenu("Item Types");
+		mnView.add(mnItemTypes);
+		
+		JCheckBoxMenuItem chckbxmntmNewCheckItem = new JCheckBoxMenuItem("Identifier");
+		chckbxmntmNewCheckItem.setSelected(true);
+		mnItemTypes.add(chckbxmntmNewCheckItem);
+		
+		JMenu mnUser = new JMenu("User");
+		menuBar.add(mnUser);
+		
+		JMenuItem mntmProfile = new JMenuItem("Profile");
+		mnUser.add(mntmProfile);
+		
+		JMenu mnAdministration = new JMenu("Administration");
+		menuBar.add(mnAdministration);
+		
+		JMenuItem mntmUsers = new JMenuItem("Users");
+		mnAdministration.add(mntmUsers);
+		
+		JMenuItem mntmConfiguration = new JMenuItem("Configuration");
+		mnAdministration.add(mntmConfiguration);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -126,6 +201,31 @@ public class MainView extends frontend.handler.MainHandler {
 		JToggleButton tglbtnSpanish = new JToggleButton("Spanish");
 		toolBar.add(tglbtnSpanish);
 		
+		JToolBar toolBar_2 = new JToolBar();
+		toolBar_2.setBorder(new TitledBorder(UIManager.getBorder("ToolBar.border"), "Filter", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(128, 128, 128)));
+		panel.add(toolBar_2);
+		
+		Box verticalBox = Box.createVerticalBox();
+		verticalBox.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		toolBar_2.add(verticalBox);
+		
+		JLabel lblCategory = new JLabel("Category");
+		lblCategory.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		lblCategory.setHorizontalTextPosition(SwingConstants.LEADING);
+		verticalBox.add(lblCategory);
+		
+		JComboBox comboBox = new JComboBox();
+		verticalBox.add(comboBox);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Default"}));
+		verticalBox.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblCategory, comboBox}));
+		
+		JLabel lblStatus = new JLabel("Status");
+		toolBar_2.add(lblStatus);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"All"}));
+		toolBar_2.add(comboBox_1);
+		
 		JToolBar toolBar_1 = new JToolBar();
 		toolBar_1.setBorder(new TitledBorder(UIManager.getBorder("ToolBar.border"), "Search Items", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(128, 128, 128)));
 		panel.add(toolBar_1);
@@ -146,15 +246,31 @@ public class MainView extends frontend.handler.MainHandler {
 		JLabel label = new JLabel("");
 		panel_1.add(label);
 		
-		JButton btnNewButton = new JButton("New button");
-		panel_1.add(btnNewButton);
+		Box verticalBox_1 = Box.createVerticalBox();
+		verticalBox_1.setAutoscrolls(true);
+		panel_1.add(verticalBox_1);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		panel_1.add(btnNewButton_2);
+		JButton btnNewButton = new JButton("New");
+		verticalBox_1.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("New button");
+		Component rigidArea = Box.createRigidArea(new Dimension(0, 5));
+		verticalBox_1.add(rigidArea);
+		
+		JButton btnNewButton_2 = new JButton("Edit");
+		verticalBox_1.add(btnNewButton_2);
+		
+		Component rigidArea_1 = Box.createRigidArea(new Dimension(0, 5));
+		verticalBox_1.add(rigidArea_1);
+		
+		JButton btnNewButton_1 = new JButton("Disable");
+		verticalBox_1.add(btnNewButton_1);
 		btnNewButton_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		panel_1.add(btnNewButton_1);
+		
+		Component rigidArea_2 = Box.createRigidArea(new Dimension(0, 5));
+		verticalBox_1.add(rigidArea_2);
+		
+		JButton btnDelete = new JButton("Delete");
+		verticalBox_1.add(btnDelete);
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
