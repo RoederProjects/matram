@@ -155,6 +155,15 @@ public class SqlReader {
 	}
 	
 	public void conCheck() {
+
+		try {
+			if (conn == null || conn.isClosed() || statement == null || statement.isClosed()) {
+				statement = getConnection(null).createStatement();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
     }
 
 }
