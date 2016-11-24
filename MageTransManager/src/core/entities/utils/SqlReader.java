@@ -117,15 +117,15 @@ public class SqlReader {
 		return statement;
 	}
 	
-	public ResultSet sqlExecute(String sqlQuery) {
+	public ArrayList sqlExecute(String sqlQuery) {
 		result = new ArrayList<>();
 		
 		try {
 			ResultSet res = statement.executeQuery(sqlQuery);
 			while (res.next()) {
 				System.out.println(res.getString("UserName"));
-				ResultSet r = new ResultSet(res.getLong(1), res.getLong(2), res.getLong(3), res.getLong(4));
-				result.add(r);
+				//ResultSet r = new ResultSet(res.getLong(1), res.getLong(2), res.getLong(3), res.getLong(4));
+				result.add(res);
 			}
 			res.close();
 		} 

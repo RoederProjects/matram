@@ -42,11 +42,9 @@ public class FtpClient {
         password = ftpPwd;
        
         /**
-         * Instanciate Client
+         * Init fields
          */
         ftp = new FileTransferClient();
-        // set remote host
-        //log.info("Setting remote host");
         try {
             ftp.setRemoteHost(host);
             ftp.setUserName(username);
