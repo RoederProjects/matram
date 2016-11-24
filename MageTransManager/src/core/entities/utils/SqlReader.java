@@ -1,4 +1,4 @@
-package core.entities.service;
+package core.entities.utils;
 
 import java.io.File;
 import java.sql.Connection;
@@ -117,11 +117,11 @@ public class SqlReader {
 		return statement;
 	}
 	
-	public ResultSet sqlQUery(String sql) {
+	public ResultSet sqlExecute(String sqlQuery) {
 		result = new ArrayList<>();
 		
 		try {
-			ResultSet res = statement.executeQuery(sql);
+			ResultSet res = statement.executeQuery(sqlQuery);
 			while (res.next()) {
 				System.out.println(res.getString("UserName"));
 				ResultSet r = new ResultSet(res.getLong(1), res.getLong(2), res.getLong(3), res.getLong(4));
@@ -155,13 +155,6 @@ public class SqlReader {
 	}
 	
 	public void conCheck() {
-        try {
-            if (conn == null || conn.isClosed() || statement == null || statement.isClosed()) {
-            	statement = getConnection(null).createStatement();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SqlClient.class.getName()).log(Level.SEVERE, null, ex); /* Könntest Du hier deine Variablen noch anpassen? */
-        }
     }
 
 }
