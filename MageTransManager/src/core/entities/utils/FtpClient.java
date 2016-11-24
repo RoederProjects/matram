@@ -8,9 +8,15 @@ package core.entities.utils;
 
 import com.enterprisedt.net.ftp.FTPException;
 import com.enterprisedt.net.ftp.FileTransferClient;
-import com.enterprisedt.util.debug.Level;
-import com.enterprisedt.util.debug.Logger;
 import java.io.IOException;
+
+/**
+ * Class FtpClient handles Ftp-based Actions like connect to server,upload to server, change remote directory
+ * 
+ * @author Timo Röder	
+ * @version 1.0
+ * @datum 22.11.2016
+ */
 
 public class FtpClient {
 
@@ -19,36 +25,25 @@ public class FtpClient {
     private String password;
 
     private FileTransferClient ftp;
-    
-    /**
-     * Logger for Debugging/Output for Log-File
-     * set up logger so that we get some output
-    **/
-    //private Logger log = Logger.getLogger(FtpClient.class);
-    
-/*******************************************************************************
+  
+/**
  * Constructor - Creates FTP for given host data
      * @param ftpHost
      * @param ftpUser
      * @param ftpPwd
- ******************************************************************************/
+ */
     public FtpClient(String ftpHost, String ftpUser, String ftpPwd) {
         
-    	 /**
-         * Logger for Debugging/Output for Log-File
-         * set up logger so that we get some output
-        **/
-        //Logger.setLevel(Level.INFO);
-        
-        // extract arguments
+        /**
+         * Init fields from constructor arguments
+         */
         host = ftpHost;
         username = ftpUser;
         password = ftpPwd;
-        
-
-        // create client
-        //log.info("Creating FTP client");
-        
+       
+        /**
+         * Instanciate Client
+         */
         ftp = new FileTransferClient();
         // set remote host
         //log.info("Setting remote host");
@@ -65,15 +60,15 @@ public class FtpClient {
 /*******************************************************************************
  * public method connect
  ******************************************************************************/
+    
     public void connect() {
-        // connect to the server
-        //log.info("Connecting to server " + host);
+       
         try {
             ftp.connect();
         } catch (FTPException | IOException ex) {
             java.util.logging.Logger.getLogger(FtpClient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //log.info("Connected and logged in to server " + host);
+        
     }
 
 /*******************************************************************************
