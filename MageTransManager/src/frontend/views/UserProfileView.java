@@ -9,9 +9,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import java.awt.Dimension;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.LineBorder;
+
+import core.entities.bricks.User;
+
 import java.awt.Color;
 
 public class UserProfileView extends JFrame {
@@ -23,7 +25,7 @@ public class UserProfileView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public UserProfileView() {
+	public UserProfileView(User currentUser) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 412, 524);
 		contentPane = new JPanel();

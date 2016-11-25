@@ -29,6 +29,10 @@ import java.awt.event.ActionEvent;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import core.entities.bricks.User;
+import frontend.handler.MainHandler;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SpringLayout;
@@ -49,34 +53,27 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+
+
 public class MainView extends frontend.handler.MainHandler {
 
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField textField;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainView frame = new MainView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+	private User currentUser;
+	private MainHandler mainHandler;
 
 	/**
 	 * Create the frame.
 	 */
-	public MainView() {
+	public MainView(User currentUser) {
+		
+		this.currentUser = currentUser;
+		mainHandler = new MainHandler();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 751, 554);
+		setBounds(100, 100, 920, 554);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -112,6 +109,11 @@ public class MainView extends frontend.handler.MainHandler {
 		mnStart.add(separator_1);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		mnStart.add(mntmExit);
 		
 		JMenu mnEdit = new JMenu("Edit");
@@ -162,15 +164,46 @@ public class MainView extends frontend.handler.MainHandler {
 		menuBar.add(mnUser);
 		
 		JMenuItem mntmProfile = new JMenuItem("Profile");
+		mntmProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openUserProfile();
+			}
+		});
 		mnUser.add(mntmProfile);
 		
 		JMenu mnAdministration = new JMenu("Administration");
 		menuBar.add(mnAdministration);
 		
 		JMenuItem mntmUsers = new JMenuItem("Users");
+		mntmUsers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				openUserConfig(0);
+			}
+		});
 		mnAdministration.add(mntmUsers);
 		
+		JMenuItem mntmUsergroups = new JMenuItem("UserGroups");
+		mntmUsergroups.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openUserConfig(1);
+			}
+		});
+		mnAdministration.add(mntmUsergroups);
+		
+		JMenuItem mntmUserteams = new JMenuItem("UserTeams");
+		mntmUserteams.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openUserConfig(2);
+			}
+		});
+		mnAdministration.add(mntmUserteams);
+		
 		JMenuItem mntmConfiguration = new JMenuItem("Configuration");
+		mntmConfiguration.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				openSettings();
+			}
+		});
 		mnAdministration.add(mntmConfiguration);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -186,20 +219,30 @@ public class MainView extends frontend.handler.MainHandler {
 		toolBar.setBorder(new TitledBorder(UIManager.getBorder("ToolBar.border"), "Show/Hide", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, Color.GRAY));
 		panel.add(toolBar);
 		
+		Box verticalBox_3 = Box.createVerticalBox();
+		toolBar.add(verticalBox_3);
+		
+		JLabel lblItemTypes = new JLabel("Item Types");
+		lblItemTypes.setAlignmentX(Component.CENTER_ALIGNMENT);
+		verticalBox_3.add(lblItemTypes);
+		
+		Box horizontalBox = Box.createHorizontalBox();
+		verticalBox_3.add(horizontalBox);
+		
 		JToggleButton tglbtnGerman = new JToggleButton("German");
-		toolBar.add(tglbtnGerman);
+		horizontalBox.add(tglbtnGerman);
 		
 		JToggleButton tglbtnEnglish = new JToggleButton("English");
-		toolBar.add(tglbtnEnglish);
+		horizontalBox.add(tglbtnEnglish);
 		
 		JToggleButton tglbtnFrensh = new JToggleButton("French");
-		toolBar.add(tglbtnFrensh);
+		horizontalBox.add(tglbtnFrensh);
 		
 		JToggleButton tglbtnItalian = new JToggleButton("Italian");
-		toolBar.add(tglbtnItalian);
+		horizontalBox.add(tglbtnItalian);
 		
 		JToggleButton tglbtnSpanish = new JToggleButton("Spanish");
-		toolBar.add(tglbtnSpanish);
+		horizontalBox.add(tglbtnSpanish);
 		
 		JToolBar toolBar_2 = new JToolBar();
 		toolBar_2.setBorder(new TitledBorder(UIManager.getBorder("ToolBar.border"), "Filter", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(128, 128, 128)));
@@ -210,7 +253,7 @@ public class MainView extends frontend.handler.MainHandler {
 		toolBar_2.add(verticalBox);
 		
 		JLabel lblCategory = new JLabel("Category");
-		lblCategory.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		lblCategory.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblCategory.setHorizontalTextPosition(SwingConstants.LEADING);
 		verticalBox.add(lblCategory);
 		
@@ -219,12 +262,19 @@ public class MainView extends frontend.handler.MainHandler {
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Default"}));
 		verticalBox.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblCategory, comboBox}));
 		
+		Component rigidArea_3 = Box.createRigidArea(new Dimension(20, 20));
+		toolBar_2.add(rigidArea_3);
+		
+		Box verticalBox_2 = Box.createVerticalBox();
+		toolBar_2.add(verticalBox_2);
+		
 		JLabel lblStatus = new JLabel("Status");
-		toolBar_2.add(lblStatus);
+		lblStatus.setAlignmentX(Component.CENTER_ALIGNMENT);
+		verticalBox_2.add(lblStatus);
 		
 		JComboBox comboBox_1 = new JComboBox();
+		verticalBox_2.add(comboBox_1);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"All"}));
-		toolBar_2.add(comboBox_1);
 		
 		JToolBar toolBar_1 = new JToolBar();
 		toolBar_1.setBorder(new TitledBorder(UIManager.getBorder("ToolBar.border"), "Search Items", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(128, 128, 128)));

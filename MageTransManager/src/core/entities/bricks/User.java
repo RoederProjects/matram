@@ -9,9 +9,7 @@ public class User {
 	 * @param userName
 	 * @param userPass
 	 */
-	public User(String userName, String userPass) {
-		this.userName = userName;
-		this.userPass = userPass;
+	public User() {
 	}
 
 	/**

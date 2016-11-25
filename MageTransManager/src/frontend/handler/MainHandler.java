@@ -1,10 +1,17 @@
 package frontend.handler;
 
+import core.entities.bricks.User;
+import frontend.forms.AuthForm;
 import frontend.views.ItemEditorView;
 import frontend.views.ItemTypeEditorView;
+import frontend.views.SettingsView;
+import frontend.views.UserMgrView;
+import frontend.views.UserProfileView;
 
 public class MainHandler extends javax.swing.JFrame {
 
+	private User currentUser;
+	
 	public void openItemEditor() {
     	new ItemEditorView().setVisible(true);
     }
@@ -14,15 +21,19 @@ public class MainHandler extends javax.swing.JFrame {
     }
     
     public void openSettings() {
-        new frontend.views.SettingsView().setVisible(true);
+        new SettingsView().setVisible(true);
     }
     
     public boolean requestAuth() {
-    	new frontend.forms.AuthForm().setVisible(true);
+    	new AuthForm().setVisible(true);
     	return true;
     }
     
     public void openUserConfig(int tab) {
-    	new frontend.views.UserMgrView(tab).setVisible(true);
+    	new UserMgrView(tab).setVisible(true);
+    }
+    
+    public void openUserProfile() {
+    	new UserProfileView(this.currentUser).setVisible(true);
     }
 }

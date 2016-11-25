@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import core.entities.bricks.User;
+
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -143,5 +146,10 @@ public class AuthForm extends JDialog {
 		credCorrect=true;
 		this.dispose();
 		return credCorrect;
+	}
+
+	public User getUser() {
+		User currentUser = new User();
+		return currentUser;
 	}
 }
