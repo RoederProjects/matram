@@ -117,6 +117,16 @@ public class SqlReader {
 		return statement;
 	}
 	
+	/**
+	 * COMMENTARY BY TIMO:
+	 * Ich denke, wir sollten hier einfach nur das ResultSet zurückgeben
+	 * und dann je nach Abfrage vielleicht jeweils in einer eigenen Methode oder Klasse
+	 * aus dem ResultSet eine ArrayList mit dem entsprechendem "type of argument" generieren.
+	 * Also z.B. für eine User-Abfrage wird eine ArrayList<User> zurückgegeben,
+	 * oder für Item-Abfragen ArrayList<Item>.... You agreeeee to meeeee ?
+	 * @param sqlQuery
+	 * @return
+	 */
 	public ArrayList sqlExecute(String sqlQuery) {
 		result = new ArrayList<>();
 		

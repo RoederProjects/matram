@@ -2,15 +2,54 @@ package core.entities.bricks;
 
 public class UserGroup {
 
-	private int userGroupID;
-	private String userGroupName;
+	private int id;
+	private String name;
+	private User[] member;
+	/**
+	 * @param userGroupID
+	 * @param userGroupName
+	 * @param member
+	 */
+	public UserGroup(int userGroupID, String userGroupName, User[] member) {
+		this.id = userGroupID;
+		this.name = userGroupName;
+		this.member = member;
+	}
+	/**
+	 * @return the userGroupID
+	 */
+	public int getUserGroupID() {
+		return id;
+	}
+	/**
+	 * @param userGroupID the userGroupID to set
+	 */
+	public void setUserGroupID(int userGroupID) {
+		this.id = userGroupID;
+	}
+	/**
+	 * @return the userGroupName
+	 */
+	public String getUserGroupName() {
+		return name;
+	}
+	/**
+	 * @param userGroupName the userGroupName to set
+	 */
+	public void setUserGroupName(String userGroupName) {
+		this.name = userGroupName;
+	}
+	/**
+	 * @return the member
+	 */
+	public User[] getMember() {
+		return member;
+	}
+	/**
+	 * @param member the member to set
+	 */
+	public void setMember(User[] member) {
+		this.member = member;
+	}
 	
-	/** Enabled Features **/
-	private boolean enabledConfigUsers;
-	private boolean enabledConfigLangVersions;
-	private boolean enabledConfigSettings;
-	private boolean enabledEditTranslations;
-	private boolean enabledFormatting;
-	private boolean enabledExport;
-	private boolean enabledPush2Live;
 }
