@@ -51,7 +51,7 @@ public class SqlReader {
 	 * 
 	 */
 	
-	public SqlReader(String absPathFilename) {
+	public SqlReader() {
 		/*File file = new File (relPathFilename);
 		System.out.println("Try access to " + file.getAbsolutePath());
 		
@@ -84,13 +84,13 @@ public class SqlReader {
 		
 	}
 	
-	public Connection getConnection(String absPathFilename) {
-		File file = new File (absPathFilename);
-		System.out.println("Try access to " + file.getAbsolutePath());
+	public Connection getConnection(File dbFile) {
+		//File file = new File (absPathFilename);
+		System.out.println("Try access to " + dbFile.getAbsolutePath());
 		
 		try {
 			// establish the connection with the DriverManager
-			conn = DriverManager.getConnection("jdbc:ucanaccess://" + file.getAbsolutePath());
+			conn = DriverManager.getConnection("jdbc:ucanaccess://" + dbFile.getAbsolutePath());
 			
 			// create a statement to send requests
 			statement = conn.createStatement();

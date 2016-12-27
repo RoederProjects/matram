@@ -22,22 +22,27 @@ import javax.swing.JScrollPane;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import frontend.handler.SettingsHandler;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class SettingsView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textField_ftpHost;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPasswordField textField_3;
+	private JTextField textField_ftpUser;
+	private JPasswordField textField_userPass;
 	private JTable table;
 
 	/**
@@ -113,8 +118,8 @@ public class SettingsView extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Server/Host");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textField_ftpHost = new JTextField();
+		textField_ftpHost.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Port");
 		
@@ -123,13 +128,13 @@ public class SettingsView extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("User");
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textField_ftpUser = new JTextField();
+		textField_ftpUser.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Password");
 		
-		textField_3 = new JPasswordField();
-		textField_3.setColumns(10);
+		textField_userPass = new JPasswordField();
+		textField_userPass.setColumns(10);
 		
 		JButton btnTestConnection = new JButton("Test Connection");
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -148,9 +153,9 @@ public class SettingsView extends JFrame {
 										.addComponent(lblNewLabel_2))
 									.addGap(18)
 									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(textField_2)
-										.addComponent(textField, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-										.addComponent(textField_3, Alignment.TRAILING))
+										.addComponent(textField_ftpUser)
+										.addComponent(textField_ftpHost, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+										.addComponent(textField_userPass, Alignment.TRAILING))
 									.addGap(18)
 									.addComponent(lblNewLabel_1)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -171,17 +176,17 @@ public class SettingsView extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_ftpHost, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_1))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_2)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField_ftpUser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_3)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textField_userPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(44)
 					.addComponent(btnTestConnection)
 					.addContainerGap(81, Short.MAX_VALUE))
@@ -195,10 +200,12 @@ public class SettingsView extends JFrame {
 		
 		JSeparator separator_1 = new JSeparator();
 		
-		JLabel lblNewLabel_5 = new JLabel("I:\\\\Daten\\Access\\MTMApp\\mtm_db.accdb");
-		lblNewLabel_5.setBorder(new CompoundBorder(new LineBorder(new Color(102, 102, 255)), new EmptyBorder(4, 4, 4, 4)));
-		lblNewLabel_5.setOpaque(true);
-		lblNewLabel_5.setBackground(Color.WHITE);
+		JTextField textField_dbAbsPathFileName = new JTextField("I:\\\\Daten\\Access\\MTMApp\\mtm_db.accdb");
+		textField_dbAbsPathFileName.setEditable(false);
+		textField_dbAbsPathFileName.setEnabled(false);
+		textField_dbAbsPathFileName.setBorder(new CompoundBorder(new LineBorder(new Color(102, 102, 255)), new EmptyBorder(4, 4, 4, 4)));
+		textField_dbAbsPathFileName.setOpaque(true);
+		textField_dbAbsPathFileName.setBackground(Color.WHITE);
 		
 		JButton btnNewButton = new JButton("Browse");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -208,6 +215,11 @@ public class SettingsView extends JFrame {
 		});
 		
 		JButton btnTestConnection_1 = new JButton("Test Connection");
+		btnTestConnection_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new SettingsHandler().testSqlConnection(new File(textField_dbAbsPathFileName.getSelectedText()));
+			}
+		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -217,7 +229,7 @@ public class SettingsView extends JFrame {
 						.addComponent(lblNewLabel_4)
 						.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING, false)
 							.addGroup(gl_panel_2.createSequentialGroup()
-								.addComponent(lblNewLabel_5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(textField_dbAbsPathFileName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
 								.addComponent(btnNewButton))
 							.addComponent(separator_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 397, GroupLayout.PREFERRED_SIZE))
@@ -233,7 +245,7 @@ public class SettingsView extends JFrame {
 					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_5, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_dbAbsPathFileName, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnNewButton))
 					.addGap(18)
 					.addComponent(btnTestConnection_1)
@@ -389,7 +401,17 @@ public class SettingsView extends JFrame {
 	}
 	
 	private void openFileChooser() {
-		frontend.dialogs.FileChooser fileChooser2 = new frontend.dialogs.FileChooser();
-		fileChooser2.setVisible(true);
+		//frontend.dialogs.FileChooser fileChooser2 = new frontend.dialogs.FileChooser();
+		//fileChooser2.setVisible(true);
+		JFileChooser chooser = new JFileChooser();
+	    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+	        "JPG & GIF Images", "jpg", "gif");
+	    chooser.setFileFilter(filter);
+	    int returnVal = chooser.showOpenDialog(this);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	       System.out.println("You chose to open this file: " +
+	            chooser.getSelectedFile().getName());
+	       this.textField_dbAbsPathFileName.setText(chooser.getSelectedFile().getName());
+	    }
 	}
 }

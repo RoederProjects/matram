@@ -229,19 +229,19 @@ public class MainView extends frontend.handler.MainHandler {
 		Box horizontalBox = Box.createHorizontalBox();
 		verticalBox_3.add(horizontalBox);
 		
-		JToggleButton tglbtnGerman = new JToggleButton("German");
+		JToggleButton tglbtnGerman = new JToggleButton("DE");
 		horizontalBox.add(tglbtnGerman);
 		
-		JToggleButton tglbtnEnglish = new JToggleButton("English");
+		JToggleButton tglbtnEnglish = new JToggleButton("EN");
 		horizontalBox.add(tglbtnEnglish);
 		
-		JToggleButton tglbtnFrensh = new JToggleButton("French");
+		JToggleButton tglbtnFrensh = new JToggleButton("FR");
 		horizontalBox.add(tglbtnFrensh);
 		
-		JToggleButton tglbtnItalian = new JToggleButton("Italian");
+		JToggleButton tglbtnItalian = new JToggleButton("IT");
 		horizontalBox.add(tglbtnItalian);
 		
-		JToggleButton tglbtnSpanish = new JToggleButton("Spanish");
+		JToggleButton tglbtnSpanish = new JToggleButton("ES");
 		horizontalBox.add(tglbtnSpanish);
 		
 		JToolBar toolBar_2 = new JToolBar();
@@ -276,6 +276,19 @@ public class MainView extends frontend.handler.MainHandler {
 		verticalBox_2.add(comboBox_1);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"All"}));
 		
+		Component rigidArea_4 = Box.createRigidArea(new Dimension(20, 20));
+		toolBar_2.add(rigidArea_4);
+		
+		Box verticalBox_4 = Box.createVerticalBox();
+		toolBar_2.add(verticalBox_4);
+		
+		JLabel lblReviewState = new JLabel("Review State");
+		lblReviewState.setAlignmentX(Component.CENTER_ALIGNMENT);
+		verticalBox_4.add(lblReviewState);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		verticalBox_4.add(comboBox_2);
+		
 		JToolBar toolBar_1 = new JToolBar();
 		toolBar_1.setBorder(new TitledBorder(UIManager.getBorder("ToolBar.border"), "Search Items", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(128, 128, 128)));
 		panel.add(toolBar_1);
@@ -293,34 +306,49 @@ public class MainView extends frontend.handler.MainHandler {
 		contentPane.add(panel_1, BorderLayout.WEST);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 		
-		JLabel label = new JLabel("");
-		panel_1.add(label);
-		
 		Box verticalBox_1 = Box.createVerticalBox();
 		verticalBox_1.setAutoscrolls(true);
 		panel_1.add(verticalBox_1);
 		
+		Box horizontalBox_4 = Box.createHorizontalBox();
+		verticalBox_1.add(horizontalBox_4);
+		
 		JButton btnNewButton = new JButton("New");
-		verticalBox_1.add(btnNewButton);
+		horizontalBox_4.add(btnNewButton);
 		
 		Component rigidArea = Box.createRigidArea(new Dimension(0, 5));
 		verticalBox_1.add(rigidArea);
 		
+		Box horizontalBox_3 = Box.createHorizontalBox();
+		verticalBox_1.add(horizontalBox_3);
+		
 		JButton btnNewButton_2 = new JButton("Edit");
-		verticalBox_1.add(btnNewButton_2);
+		horizontalBox_3.add(btnNewButton_2);
 		
 		Component rigidArea_1 = Box.createRigidArea(new Dimension(0, 5));
 		verticalBox_1.add(rigidArea_1);
 		
+		Box horizontalBox_2 = Box.createHorizontalBox();
+		verticalBox_1.add(horizontalBox_2);
+		
 		JButton btnNewButton_1 = new JButton("Disable");
-		verticalBox_1.add(btnNewButton_1);
+		horizontalBox_2.add(btnNewButton_1);
 		btnNewButton_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		Component rigidArea_2 = Box.createRigidArea(new Dimension(0, 5));
 		verticalBox_1.add(rigidArea_2);
 		
+		Box horizontalBox_1 = Box.createHorizontalBox();
+		verticalBox_1.add(horizontalBox_1);
+		
 		JButton btnDelete = new JButton("Delete");
-		verticalBox_1.add(btnDelete);
+		horizontalBox_1.add(btnDelete);
+		
+		Component rigidArea_5 = Box.createRigidArea(new Dimension(0, 5));
+		panel_1.add(rigidArea_5);
+		
+		Component verticalGlue_2 = Box.createVerticalGlue();
+		panel_1.add(verticalGlue_2);
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
