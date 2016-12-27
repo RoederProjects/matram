@@ -22,14 +22,19 @@ import javax.swing.JScrollPane;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import frontend.handler.SettingsHandler;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class SettingsView extends JFrame {
 
@@ -212,7 +217,7 @@ public class SettingsView extends JFrame {
 		JButton btnTestConnection_1 = new JButton("Test Connection");
 		btnTestConnection_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				new SettingsHandler().testSqlConnection(new File(textField_dbAbsPathFileName.getSelectedText()));
 			}
 		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
@@ -396,7 +401,17 @@ public class SettingsView extends JFrame {
 	}
 	
 	private void openFileChooser() {
-		frontend.dialogs.FileChooser fileChooser2 = new frontend.dialogs.FileChooser();
-		fileChooser2.setVisible(true);
+		//frontend.dialogs.FileChooser fileChooser2 = new frontend.dialogs.FileChooser();
+		//fileChooser2.setVisible(true);
+		JFileChooser chooser = new JFileChooser();
+	    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+	        "JPG & GIF Images", "jpg", "gif");
+	    chooser.setFileFilter(filter);
+	    int returnVal = chooser.showOpenDialog(this);
+	    if(returnVal == JFileChooser.APPROVE_OPTION) {
+	       System.out.println("You chose to open this file: " +
+	            chooser.getSelectedFile().getName());
+	       this.textField_dbAbsPathFileName.setText(chooser.getSelectedFile().getName());
+	    }
 	}
 }
