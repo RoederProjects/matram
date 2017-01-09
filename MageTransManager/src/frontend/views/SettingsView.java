@@ -44,6 +44,7 @@ public class SettingsView extends JFrame {
 	private JTextField textField_ftpUser;
 	private JPasswordField textField_userPass;
 	private JTable table;
+	private JTextField textField_dbAbsPathFileName;
 
 	/**
 	 * Create the frame.
@@ -200,7 +201,7 @@ public class SettingsView extends JFrame {
 		
 		JSeparator separator_1 = new JSeparator();
 		
-		JTextField textField_dbAbsPathFileName = new JTextField("I:\\\\Daten\\Access\\MTMApp\\mtm_db.accdb");
+		textField_dbAbsPathFileName = new JTextField("I:\\\\Daten\\Access\\MTMApp\\mtm_db.accdb");
 		textField_dbAbsPathFileName.setEditable(false);
 		textField_dbAbsPathFileName.setEnabled(false);
 		textField_dbAbsPathFileName.setBorder(new CompoundBorder(new LineBorder(new Color(102, 102, 255)), new EmptyBorder(4, 4, 4, 4)));

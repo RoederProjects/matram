@@ -7,7 +7,9 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import core.entities.bricks.Store;
 import core.entities.bricks.User;
+import renderer.StoreCellRenderer;
 
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
@@ -20,17 +22,20 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+//import javax.swing.DefaultComboBoxModel;
 
 public class AuthForm extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField inputUserName;
-	private JPasswordField inputUserPass;
+	public JTextField txtf_userName;
+	public JPasswordField txtf_userPwd;
 	private JButton cancelButton;
 	private JButton btnLogin;
 	
 	private boolean credCorrect = false;
+	public JComboBox<Store> sel_store;
 
 	/**
 	 * Create the dialog.
@@ -50,10 +55,10 @@ public class AuthForm extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
-			inputUserName = new JTextField();
-			inputUserName.setColumns(10);
+			txtf_userName = new JTextField();
+			txtf_userName.setColumns(10);
 		}
-		inputUserPass = new JPasswordField();
+		txtf_userPwd = new JPasswordField();
 		JLabel inputUserNameLabel = new JLabel("User");
 		inputUserNameLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		JLabel inputUserPassLabel = new JLabel("Password");
@@ -63,8 +68,16 @@ public class AuthForm extends JDialog {
 		
 		JLabel selectShopLabel = new JLabel("Shop");
 		
-		JComboBox selectShop = new JComboBox();
-		selectShop.setModel(new DefaultComboBoxModel(new String[] {"Wein [Magento]", "Koffer [Magento]"}));
+		//sel_store = new JComboBox<Store>();
+		//sel_store.setModel((ComboBoxModel) new StoreCellRenderer());
+		//sel_store.setModel(new DefaultComboBoxModel<Store>());
+		sel_store = new JComboBox<Store>();
+		sel_store.setRenderer(new StoreCellRenderer());
+		sel_store.setModel(new DefaultComboBoxModel());
+		sel_store.addItem(new Store("weinregal-profi.de", "magento"));
+		sel_store.addItem(new Store("promondo.de", "websale"));
+		
+		
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -73,11 +86,11 @@ public class AuthForm extends JDialog {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblAuthentificationIsRequired)
 						.addComponent(selectShopLabel)
-						.addComponent(selectShop, 0, 228, Short.MAX_VALUE)
+						.addComponent(sel_store, 0, 228, Short.MAX_VALUE)
 						.addComponent(inputUserNameLabel, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-						.addComponent(inputUserName, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+						.addComponent(txtf_userName, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
 						.addComponent(inputUserPassLabel, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-						.addComponent(inputUserPass, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+						.addComponent(txtf_userPwd, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_contentPanel.setVerticalGroup(
@@ -88,15 +101,15 @@ public class AuthForm extends JDialog {
 					.addGap(18)
 					.addComponent(selectShopLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(selectShop, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(sel_store, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(inputUserNameLabel)
 					.addGap(3)
-					.addComponent(inputUserName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(txtf_userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(inputUserPassLabel)
 					.addGap(2)
-					.addComponent(inputUserPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(txtf_userPwd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(69))
 		);
 		contentPanel.setLayout(gl_contentPanel);
@@ -141,15 +154,12 @@ public class AuthForm extends JDialog {
 	}
 
 	public boolean credCheck() {
-		String user = inputUserName.getText();
-		String password = inputUserPass.getText();
+		String user = txtf_userName.getText();
+		String password = txtf_userPwd.getText();
 		credCorrect=true;
 		this.dispose();
 		return credCorrect;
 	}
 
-	public User getUser() {
-		User currentUser = new User();
-		return currentUser;
-	}
+	
 }
