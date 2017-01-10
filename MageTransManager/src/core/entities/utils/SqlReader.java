@@ -20,6 +20,12 @@ import core.entities.bricks.User;
  */
 
 public class SqlReader {
+	
+	/**
+	 * Config-Database (exists within the app-dir)
+	 */
+	File dbCoreConfig = new File("db/core_config.accdb");
+	
 	/**
 	 * Database connection from java.sql - package
 	 */
@@ -29,7 +35,6 @@ public class SqlReader {
 	 * Statement for SQL-requests from java.sql - package
 	 */
 	Statement statement = null;
-	
 	
 	/**
 	 * Result-Array for SQL-Statement from java.sql - package
@@ -107,7 +112,7 @@ public class SqlReader {
 	public Statement createStatement() {
 		try {
 			// create a statement to send requests
-			statement = getConnection(null).createStatement();
+			statement = getConnection(dbCoreConfig).createStatement();
 	}
 		catch (SQLException e) {
 			closeDatabase();
@@ -164,6 +169,11 @@ public class SqlReader {
 		}
 	}
 	
+	/**
+	 * EDIT BY TIMO:
+	 * For longer sessions it would be nice to have a conCheck()-method, which checks if a statement/connection is closed.
+	 * And open/create a statement/connection again, if its closed.
+	 */
 	public void conCheck() {
 
 		try {

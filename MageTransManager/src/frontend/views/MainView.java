@@ -54,8 +54,13 @@ import javax.swing.Box;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 
-
-public class MainView extends frontend.handler.MainHandler {
+/**
+ * @author Timo Röder
+ * {@docRoot}
+ * @category
+ * 
+ */
+public class MainView extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -69,9 +74,17 @@ public class MainView extends frontend.handler.MainHandler {
 	 */
 	public MainView(User currentUser) {
 		
+		/**
+		 * Init Fields
+		 */
 		this.currentUser = currentUser;
-		mainHandler = new MainHandler();
 		
+		// Init Handler
+		MainHandler handler = new MainHandler(currentUser);
+		
+		/**
+		 * Init GUI-Components
+		 */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 920, 554);
 		
@@ -122,7 +135,7 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Items");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openItemEditor();
+				handler.openItemEditor();
 			}
 		});
 		mnEdit.add(mntmNewMenuItem);
@@ -133,7 +146,7 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Item Types");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openItemTypeEditor();
+				handler.openItemTypeEditor();
 			}
 		});
 		mnEdit.add(mntmNewMenuItem_2);
@@ -166,7 +179,7 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenuItem mntmProfile = new JMenuItem("Profile");
 		mntmProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openUserProfile();
+				handler.openUserProfile();
 			}
 		});
 		mnUser.add(mntmProfile);
@@ -177,7 +190,7 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenuItem mntmUsers = new JMenuItem("Users");
 		mntmUsers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				openUserConfig(0);
+				handler.openUserConfig(0);
 			}
 		});
 		mnAdministration.add(mntmUsers);
@@ -185,7 +198,7 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenuItem mntmUsergroups = new JMenuItem("UserGroups");
 		mntmUsergroups.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openUserConfig(1);
+				handler.openUserConfig(1);
 			}
 		});
 		mnAdministration.add(mntmUsergroups);
@@ -193,7 +206,7 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenuItem mntmUserteams = new JMenuItem("UserTeams");
 		mntmUserteams.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openUserConfig(2);
+				handler.openUserConfig(2);
 			}
 		});
 		mnAdministration.add(mntmUserteams);
@@ -201,7 +214,7 @@ public class MainView extends frontend.handler.MainHandler {
 		JMenuItem mntmConfiguration = new JMenuItem("Configuration");
 		mntmConfiguration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				openSettings();
+				handler.openSettings();
 			}
 		});
 		mnAdministration.add(mntmConfiguration);

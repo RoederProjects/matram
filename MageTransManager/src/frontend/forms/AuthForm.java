@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import core.entities.bricks.Store;
 import core.entities.bricks.User;
+import frontend.handler.AuthFormHandler;
 import renderer.StoreCellRenderer;
 
 import javax.swing.JTextField;
@@ -33,14 +34,19 @@ public class AuthForm extends JDialog {
 	public JPasswordField txtf_userPwd;
 	private JButton cancelButton;
 	private JButton btnLogin;
+	public AuthFormHandler authFormHandler;
 	
-	private boolean credCorrect = false;
 	public JComboBox<Store> sel_store;
 
-	/**
-	 * Create the dialog.
-	 */
+	
 	public AuthForm() {
+		/**
+		 * Init Handler
+		 */
+		AuthFormHandler authFormHandler = new AuthFormHandler();
+		/**
+		 * Create the dialog.
+		 */
 		setLocationByPlatform(true);
 		setUndecorated(true);
 		setAlwaysOnTop(true);
@@ -55,8 +61,8 @@ public class AuthForm extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
-			txtf_userName = new JTextField();
-			txtf_userName.setColumns(10);
+		txtf_userName = new JTextField();
+		txtf_userName.setColumns(10);
 		}
 		txtf_userPwd = new JPasswordField();
 		JLabel inputUserNameLabel = new JLabel("User");
@@ -73,7 +79,7 @@ public class AuthForm extends JDialog {
 		//sel_store.setModel(new DefaultComboBoxModel<Store>());
 		sel_store = new JComboBox<Store>();
 		sel_store.setRenderer(new StoreCellRenderer());
-		sel_store.setModel(new DefaultComboBoxModel());
+		sel_store.setModel(new DefaultComboBoxModel<Store>());
 		sel_store.addItem(new Store("weinregal-profi.de", "magento"));
 		sel_store.addItem(new Store("promondo.de", "websale"));
 		
@@ -118,13 +124,19 @@ public class AuthForm extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						cancelDialog();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 			}
 			{
 				btnLogin = new JButton("Login");
 				btnLogin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						credCheck();
+						authFormHandler.credCheck();
+						cancelDialog();
 					}
 				});
 				btnLogin.setActionCommand("OK");
@@ -153,12 +165,10 @@ public class AuthForm extends JDialog {
 		}
 	}
 
-	public boolean credCheck() {
-		String user = txtf_userName.getText();
-		String password = txtf_userPwd.getText();
-		credCorrect=true;
+	
+	
+	public void cancelDialog() {
 		this.dispose();
-		return credCorrect;
 	}
 
 	

@@ -4,13 +4,33 @@ import core.entities.bricks.User;
 import frontend.forms.AuthForm;
 import frontend.views.ItemEditorView;
 import frontend.views.ItemTypeEditorView;
+import frontend.views.MainView;
 import frontend.views.SettingsView;
 import frontend.views.UserMgrView;
 import frontend.views.UserProfileView;
 
-public class MainHandler extends javax.swing.JFrame {
+public class MainHandler {
 
 	private User currentUser;
+	
+	public MainHandler(User currentUser) {
+		this.currentUser = currentUser;
+		
+		/*
+		 * Init (Frontend-)View
+		 */
+//		initViewLayout();
+//		initViewContent();
+	}
+	
+//	public void initViewLayout() {
+//		frontend.views.MainView mainView = new frontend.views.MainView();
+//		mainView.setVisible(true);
+//	}
+//	
+//	public void initViewContent() {
+//		
+//	}
 	
 	public void openItemEditor() {
     	new ItemEditorView().setVisible(true);
@@ -34,6 +54,7 @@ public class MainHandler extends javax.swing.JFrame {
     }
     
     public void openUserProfile() {
-    	new UserProfileView(this.currentUser).setVisible(true);
+    	new UserProfileView().setVisible(true);
+    	new UserProfileHandler(currentUser);
     }
 }
