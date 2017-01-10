@@ -8,6 +8,7 @@ public class Init {
 	public Init() {
 		// AuthFormHandler authFormHandler = new AuthFormHandler();
 		AuthForm authForm = new AuthForm();
+		authForm.setVisible(true);
 		
 	}
 }

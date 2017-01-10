@@ -1,45 +1,41 @@
 package frontend.handler;
 
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import core.entities.bricks.Store;
 import core.entities.bricks.User;
 import core.entities.service.AuthService;
-import frontend.forms.AuthForm;
 
 public class AuthFormHandler {
 	
-	AuthForm authView;
 	private User currentUser;
-	private boolean credCorrect = false;
 	
 	public AuthFormHandler() {
 		
 	}
 	
-	public void authUser() {
-		authView.sel_store.setEnabled(false);
-		authView.txtf_userName.setEnabled(false);
-		authView.txtf_userPwd.setEnabled(false);
+	public void authUser(JComboBox<Store> sel_store, JTextField txtF_userName, JPasswordField txtF_userPwd) {
+		sel_store.setEnabled(false);
+		txtF_userName.setEnabled(false);
+		txtF_userPwd.setEnabled(false);
 		
-		AuthService authService = new AuthService(authView.sel_store.getSelectedItem(), authView.txtf_userName.getText(), authView.txtf_userPwd.getPassword());
+		AuthService authService = new AuthService(sel_store.getSelectedItem(), txtF_userName.getText(), txtF_userPwd.getPassword());
 		
 		if (authService.credCheck()) {
+			setUser(txtF_userName.getText());
+			
 			loginUser();
 		}
 	}
 	
 	public void loginUser() {
-		setUser(authView.txtf_userName.getText());
-		new frontend.handler.MainHandler(currentUser);
-	}
-	
-	public boolean credCheck() {
-		String user = authView.txtf_userName.getText();
-		String password = authView.txtf_userPwd.getText();
-		credCorrect=true;
-		return credCorrect;
+		new frontend.views.MainView(getUser()).setVisible(true);
 	}
 	
 	public void setUser(String userName) {
-		User currentUser = new User();
+		this.currentUser = new User();
 		currentUser.setUserName(userName);
 	}
 	
