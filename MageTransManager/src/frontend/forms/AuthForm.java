@@ -60,10 +60,7 @@ public class AuthForm extends JDialog {
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		{
 		txtf_userName = new JTextField();
-		txtf_userName.setColumns(10);
-		}
 		txtf_userPwd = new JPasswordField();
 		JLabel inputUserNameLabel = new JLabel("User");
 		inputUserNameLabel.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -78,10 +75,10 @@ public class AuthForm extends JDialog {
 		//sel_store.setModel((ComboBoxModel) new StoreCellRenderer());
 		//sel_store.setModel(new DefaultComboBoxModel<Store>());
 		sel_store = new JComboBox<Store>();
-		sel_store.setRenderer(new StoreCellRenderer());
-		sel_store.setModel(new DefaultComboBoxModel<Store>());
-		sel_store.addItem(new Store("weinregal-profi.de", "magento"));
-		sel_store.addItem(new Store("promondo.de", "websale"));
+//		sel_store.setRenderer(new StoreCellRenderer());
+//		sel_store.setModel(new DefaultComboBoxModel<Store>());
+//		sel_store.addItem(new Store("weinregal-profi.de", "magento"));
+//		sel_store.addItem(new Store("promondo.de", "websale"));
 		
 		
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
@@ -135,7 +132,7 @@ public class AuthForm extends JDialog {
 				btnLogin = new JButton("Login");
 				btnLogin.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						authFormHandler.credCheck();
+						authFormHandler.authUser(sel_store, txtf_userName, txtf_userPwd);
 						cancelDialog();
 					}
 				});

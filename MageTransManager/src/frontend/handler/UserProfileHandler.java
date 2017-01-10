@@ -21,8 +21,8 @@ public class UserProfileHandler {
 	}
 	
 	public void initViewLayout() {
-		frontend.views.UserProfileView userProfileView = new frontend.views.UserProfileView();
-		userProfileView.setVisible(true);
+		view = new frontend.views.UserProfileView();
+		view.setVisible(true);
 	}
 	
 	public void initViewContent() {
