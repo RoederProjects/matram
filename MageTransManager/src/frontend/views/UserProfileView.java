@@ -14,6 +14,7 @@ import core.entities.bricks.User;
 import frontend.handler.UserProfileHandler;
 
 import java.awt.Color;
+import java.awt.Font;
 
 public class UserProfileView extends JFrame {
 
@@ -24,11 +25,12 @@ public class UserProfileView extends JFrame {
 	private JLabel lblUserIcon;
 
 	public UserProfileView() {
+		setTitle("User Profile");
 		
 		/**
 		 * Create the frame.
 		 */
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 412, 524);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,15 +68,18 @@ public class UserProfileView extends JFrame {
 		
 		JLabel lbl_userNameLabel = new JLabel("User");
 		
-		lbl_userName = new JLabel("<<Username (Fullname)>>");
+		lbl_userName = new JLabel("admin");
+		lbl_userName.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lbl_userGroupLabel = new JLabel("UserGroup");
 		
 		lbl_userGroup = new JLabel("<<Usergroup>>");
+		lbl_userGroup.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lbl_userTeamLabel = new JLabel("Team");
 		
 		lbl_userTeam = new JLabel("<<Team>>");
+		lbl_userTeam.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

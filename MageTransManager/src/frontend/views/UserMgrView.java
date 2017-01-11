@@ -23,6 +23,8 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import javax.swing.JMenuItem;
+import javax.swing.DefaultComboBoxModel;
 
 public class UserMgrView extends JFrame {
 
@@ -35,7 +37,7 @@ public class UserMgrView extends JFrame {
 	 * Create the frame.
 	 */
 	public UserMgrView(int tabIndex) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 606, 518);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -77,7 +79,7 @@ public class UserMgrView extends JFrame {
 					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
 		);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Add User");
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -89,12 +91,13 @@ public class UserMgrView extends JFrame {
 		JLabel lblPassword = new JLabel("Password");
 		
 		JComboBox<JCheckBox> comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrator", "Standard user", "Guest user"}));
 		
 		JLabel lblUsergroup = new JLabel("Usergroup");
 		
 		JButton btnTeam = new JButton("team");
 		
-		JButton btnNewButton_1 = new JButton("New button");
+		JButton btnNewButton_1 = new JButton("Delete User");
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -151,6 +154,9 @@ public class UserMgrView extends JFrame {
 		
 		JCheckBoxMenuItem chckbxmntmEnglish = new JCheckBoxMenuItem("English");
 		popupMenu.add(chckbxmntmEnglish);
+		
+		JMenuItem mntmFrenchteam = new JMenuItem("French-Team");
+		popupMenu.add(mntmFrenchteam);
 		panel_1.setLayout(gl_panel_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -159,7 +165,7 @@ public class UserMgrView extends JFrame {
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"", null, null, null},
+				{"admin", "Ad Mini", "Administrator", null},
 				{null, null, null, null},
 				{null, null, null, null},
 				{null, null, null, null},
@@ -177,12 +183,6 @@ public class UserMgrView extends JFrame {
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
-			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
 			}
 		});
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);

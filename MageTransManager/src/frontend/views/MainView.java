@@ -86,7 +86,7 @@ public class MainView extends JFrame {
 		 * Init GUI-Components
 		 */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 920, 554);
+		setBounds(100, 100, 973, 554);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -243,18 +243,23 @@ public class MainView extends JFrame {
 		verticalBox_3.add(horizontalBox);
 		
 		JToggleButton tglbtnGerman = new JToggleButton("DE");
+		tglbtnGerman.setSelected(true);
 		horizontalBox.add(tglbtnGerman);
 		
 		JToggleButton tglbtnEnglish = new JToggleButton("EN");
+		tglbtnEnglish.setSelected(true);
 		horizontalBox.add(tglbtnEnglish);
 		
 		JToggleButton tglbtnFrensh = new JToggleButton("FR");
+		tglbtnFrensh.setSelected(true);
 		horizontalBox.add(tglbtnFrensh);
 		
 		JToggleButton tglbtnItalian = new JToggleButton("IT");
+		tglbtnItalian.setSelected(true);
 		horizontalBox.add(tglbtnItalian);
 		
 		JToggleButton tglbtnSpanish = new JToggleButton("ES");
+		tglbtnSpanish.setSelected(true);
 		horizontalBox.add(tglbtnSpanish);
 		
 		JToolBar toolBar_2 = new JToolBar();
@@ -272,7 +277,8 @@ public class MainView extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		verticalBox.add(comboBox);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Default"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"All", "Default", "Control Elements", "Checkout"}));
+		comboBox.setSelectedIndex(2);
 		verticalBox.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblCategory, comboBox}));
 		
 		Component rigidArea_3 = Box.createRigidArea(new Dimension(20, 20));
@@ -287,7 +293,8 @@ public class MainView extends JFrame {
 		
 		JComboBox comboBox_1 = new JComboBox();
 		verticalBox_2.add(comboBox_1);
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"All"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"All", "Inactive", "Active", "Archived"}));
+		comboBox_1.setSelectedIndex(2);
 		
 		Component rigidArea_4 = Box.createRigidArea(new Dimension(20, 20));
 		toolBar_2.add(rigidArea_4);
@@ -300,6 +307,7 @@ public class MainView extends JFrame {
 		verticalBox_4.add(lblReviewState);
 		
 		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"All", "Not reviewed", "Reviewed", "Published"}));
 		verticalBox_4.add(comboBox_2);
 		
 		JToolBar toolBar_1 = new JToolBar();
@@ -377,9 +385,9 @@ public class MainView extends JFrame {
 		table.setRowHeight(20);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
+				{"btn_basket", "Warenkorb", "Basket", null, null, null},
+				{"btn_cart", "Einkaufswagen", "Cart", null, null, null},
+				{"btn_next", "weiter", "next", null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -397,9 +405,10 @@ public class MainView extends JFrame {
 				{null, null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column"
+				"Identifier (ItemGroup)", "DE", "EN", "FR", "IT", "ES"
 			}
 		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(125);
 		scrollPane.setViewportView(table);
 	}
 }

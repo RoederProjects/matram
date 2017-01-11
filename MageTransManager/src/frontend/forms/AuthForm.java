@@ -66,7 +66,7 @@ public class AuthForm extends JDialog {
 		inputUserNameLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		JLabel inputUserPassLabel = new JLabel("Password");
 		inputUserPassLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		JLabel lblAuthentificationIsRequired = new JLabel("Authentification is required");
+		JLabel lblAuthentificationIsRequired = new JLabel("Authentication is required");
 		lblAuthentificationIsRequired.setFont(new Font("Calibri", Font.BOLD, 13));
 		
 		JLabel selectShopLabel = new JLabel("Shop");
@@ -75,10 +75,10 @@ public class AuthForm extends JDialog {
 		//sel_store.setModel((ComboBoxModel) new StoreCellRenderer());
 		//sel_store.setModel(new DefaultComboBoxModel<Store>());
 		sel_store = new JComboBox<Store>();
-//		sel_store.setRenderer(new StoreCellRenderer());
-//		sel_store.setModel(new DefaultComboBoxModel<Store>());
-//		sel_store.addItem(new Store("weinregal-profi.de", "magento"));
-//		sel_store.addItem(new Store("promondo.de", "websale"));
+		sel_store.setRenderer(new StoreCellRenderer());
+		sel_store.setModel(new DefaultComboBoxModel<Store>());
+		sel_store.addItem(new Store("Weinregal-Shops", "magento"));
+		sel_store.addItem(new Store("Koffer-Shops", "magento"));
 		
 		
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);

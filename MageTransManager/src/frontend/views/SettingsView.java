@@ -39,10 +39,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class SettingsView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_ftpHost;
+	private JTextField txtApparchivescom;
 	private JTextField textField_1;
-	private JTextField textField_ftpUser;
-	private JPasswordField textField_userPass;
+	private JTextField txtF_user;
+	private JPasswordField txtF_pwd;
 	private JTable table;
 	private JTextField textField_dbAbsPathFileName;
 
@@ -89,6 +89,11 @@ public class SettingsView extends JFrame {
 		JButton btnSave_1 = new JButton("Save");
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cancelView();
+			}
+		});
 		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
 		gl_panel_4.setHorizontalGroup(
 			gl_panel_4.createParallelGroup(Alignment.LEADING)
@@ -119,23 +124,27 @@ public class SettingsView extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Server/Host");
 		
-		textField_ftpHost = new JTextField();
-		textField_ftpHost.setColumns(10);
+		txtApparchivescom = new JTextField();
+		txtApparchivescom.setText("app-archives.com");
+		txtApparchivescom.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Port");
 		
 		textField_1 = new JTextField();
+		textField_1.setText("21");
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("User");
 		
-		textField_ftpUser = new JTextField();
-		textField_ftpUser.setColumns(10);
+		txtF_user = new JTextField();
+		txtF_user.setText("webadmin");
+		txtF_user.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Password");
 		
-		textField_userPass = new JPasswordField();
-		textField_userPass.setColumns(10);
+		txtF_pwd = new JPasswordField();
+		txtF_pwd.setText("ultraPassword");
+		txtF_pwd.setColumns(10);
 		
 		JButton btnTestConnection = new JButton("Test Connection");
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -154,9 +163,9 @@ public class SettingsView extends JFrame {
 										.addComponent(lblNewLabel_2))
 									.addGap(18)
 									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(textField_ftpUser)
-										.addComponent(textField_ftpHost, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-										.addComponent(textField_userPass, Alignment.TRAILING))
+										.addComponent(txtF_user)
+										.addComponent(txtApparchivescom, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+										.addComponent(txtF_pwd, Alignment.TRAILING))
 									.addGap(18)
 									.addComponent(lblNewLabel_1)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -177,17 +186,17 @@ public class SettingsView extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel)
-						.addComponent(textField_ftpHost, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtApparchivescom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_1))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_2)
-						.addComponent(textField_ftpUser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtF_user, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_3)
-						.addComponent(textField_userPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtF_pwd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(44)
 					.addComponent(btnTestConnection)
 					.addContainerGap(81, Short.MAX_VALUE))
@@ -414,5 +423,9 @@ public class SettingsView extends JFrame {
 	            chooser.getSelectedFile().getName());
 	       this.textField_dbAbsPathFileName.setText(chooser.getSelectedFile().getName());
 	    }
+	}
+	
+	public void cancelView() {
+		this.dispose();
 	}
 }

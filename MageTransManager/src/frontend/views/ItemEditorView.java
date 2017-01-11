@@ -31,7 +31,7 @@ import javax.swing.DefaultComboBoxModel;
 public class ItemEditorView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtAdminuptagsnet;
 	private JComboBox textField_1;
 	private JTextArea txtA_textInput;
 
@@ -40,7 +40,7 @@ public class ItemEditorView extends JFrame {
 	 */
 	public ItemEditorView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 681, 762);
+		setBounds(100, 100, 681, 739);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,18 +49,21 @@ public class ItemEditorView extends JFrame {
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+				.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 686, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 702, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		
 		JPanel pnl_titleBar = new JPanel();
 		
-		JLabel label = new JLabel("<<Identifier>>");
+		JLabel lblBtnbasket = new JLabel("btn_basket");
+		lblBtnbasket.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_1 = new JLabel("<<Today's date>>");
+		JLabel label_1 = new JLabel("11.01.2017");
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -70,36 +73,37 @@ public class ItemEditorView extends JFrame {
 		
 		JLabel lblLastEdit = new JLabel("last edit");
 		
-		JLabel label_2 = new JLabel("<<edit date>>");
+		JLabel label_2 = new JLabel("11.01.2017 - 12:49 AM");
 		
 		JLabel lblBy = new JLabel("by");
 		
-		JLabel label_3 = new JLabel("<<username>>");
+		JLabel lblAdmin = new JLabel("admin");
 		
-		JLabel lblNewLabel_1 = new JLabel("<<action>>");
+		JLabel lblNewLabel_1 = new JLabel("Created");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		GroupLayout gl_pnl_titleBar = new GroupLayout(pnl_titleBar);
 		gl_pnl_titleBar.setHorizontalGroup(
 			gl_pnl_titleBar.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnl_titleBar.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+					.addComponent(lblBtnbasket, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
 					.addGap(19)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pnl_titleBar.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnl_titleBar.createSequentialGroup()
-							.addComponent(lblNewLabel_1)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblBy)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(label_3))
+							.addComponent(lblAdmin))
 						.addGroup(gl_pnl_titleBar.createSequentialGroup()
 							.addComponent(lblLastEdit)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(label_2)))
 					.addGap(130)
 					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
 					.addComponent(label_1)
 					.addContainerGap())
 		);
@@ -108,7 +112,7 @@ public class ItemEditorView extends JFrame {
 				.addGroup(gl_pnl_titleBar.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_pnl_titleBar.createParallelGroup(Alignment.LEADING)
-						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
 						.addGroup(gl_pnl_titleBar.createSequentialGroup()
 							.addGroup(gl_pnl_titleBar.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_pnl_titleBar.createParallelGroup(Alignment.BASELINE)
@@ -117,13 +121,13 @@ public class ItemEditorView extends JFrame {
 								.addGroup(gl_pnl_titleBar.createSequentialGroup()
 									.addGap(2)
 									.addGroup(gl_pnl_titleBar.createParallelGroup(Alignment.BASELINE)
-										.addComponent(label)
+										.addComponent(lblBtnbasket)
 										.addComponent(label_1))))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_pnl_titleBar.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblNewLabel_1)
 								.addComponent(lblBy)
-								.addComponent(label_3)))
+								.addComponent(lblAdmin)))
 						.addComponent(separator_1, GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
 					.addContainerGap())
 		);
@@ -138,8 +142,9 @@ public class ItemEditorView extends JFrame {
 		JCheckBox chckbxSendNotificationsTo = new JCheckBox("");
 		chckbxSendNotificationsTo.setSelected(true);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		txtAdminuptagsnet = new JTextField();
+		txtAdminuptagsnet.setText("admin@uptags.net");
+		txtAdminuptagsnet.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("icon");
 		
@@ -163,7 +168,7 @@ public class ItemEditorView extends JFrame {
 							.addGap(4)
 							.addComponent(chckbxSendNotificationsTo)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(textField, GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
+							.addComponent(txtAdminuptagsnet, GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
 						.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
 							.addGap(31)
 							.addComponent(lblUseTo, GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)))
@@ -179,7 +184,7 @@ public class ItemEditorView extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_4.createParallelGroup(Alignment.TRAILING)
 						.addComponent(chckbxSendNotificationsTo)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtAdminuptagsnet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(lblUseTo)
 					.addContainerGap())
@@ -321,7 +326,8 @@ public class ItemEditorView extends JFrame {
 		
 		JLabel lblBy_1 = new JLabel("by");
 		
-		JLabel label_5 = new JLabel("<<username>>");
+		JLabel lblNone = new JLabel("none");
+		lblNone.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
@@ -331,7 +337,7 @@ public class ItemEditorView extends JFrame {
 						.addGroup(gl_panel_8.createSequentialGroup()
 							.addComponent(lblBy_1)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(label_5))
+							.addComponent(lblNone))
 						.addComponent(lblReviewDone))
 					.addContainerGap(56, Short.MAX_VALUE))
 		);
@@ -343,7 +349,7 @@ public class ItemEditorView extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel_8.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblBy_1)
-						.addComponent(label_5))
+						.addComponent(lblNone))
 					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		panel_8.setLayout(gl_panel_8);
@@ -376,7 +382,7 @@ public class ItemEditorView extends JFrame {
 			gl_panel_6.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_6.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(panel_10, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+					.addComponent(panel_10, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -386,12 +392,10 @@ public class ItemEditorView extends JFrame {
 					.addContainerGap())
 		);
 		gl_panel_6.setVerticalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
+			gl_panel_6.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_6.createSequentialGroup()
-					.addComponent(panel_9, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(Alignment.TRAILING, gl_panel_6.createSequentialGroup()
 					.addGroup(gl_panel_6.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel_9, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
 						.addComponent(panel_8, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(panel_10, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(panel_7, Alignment.LEADING, 0, 0, Short.MAX_VALUE))
@@ -456,7 +460,7 @@ public class ItemEditorView extends JFrame {
 		JPanel pnl_textInput = new JPanel();
 		
 		txtA_textInput = new JTextArea();
-		txtA_textInput.setText("asdfasdfasdf");
+		txtA_textInput.setText("Warenkorb");
 		GroupLayout gl_pnl_textInput = new GroupLayout(pnl_textInput);
 		gl_pnl_textInput.setHorizontalGroup(
 			gl_pnl_textInput.createParallelGroup(Alignment.LEADING)
@@ -516,10 +520,10 @@ public class ItemEditorView extends JFrame {
 			gl_pnl_textEditor.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnl_textEditor.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_pnl_textEditor.createParallelGroup(Alignment.TRAILING, false)
+					.addGroup(gl_pnl_textEditor.createParallelGroup(Alignment.TRAILING)
 						.addComponent(pnl_textInput, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-						.addComponent(pnl_format, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
-					.addContainerGap(95, Short.MAX_VALUE))
+						.addComponent(pnl_format, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 616, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_pnl_textEditor.setVerticalGroup(
 			gl_pnl_textEditor.createParallelGroup(Alignment.LEADING)
@@ -527,8 +531,8 @@ public class ItemEditorView extends JFrame {
 					.addContainerGap()
 					.addComponent(pnl_format, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(pnl_textInput, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-					.addContainerGap())
+					.addComponent(pnl_textInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		pnl_textEditor.setLayout(gl_pnl_textEditor);
 		
@@ -537,6 +541,11 @@ public class ItemEditorView extends JFrame {
 		JButton btnNewButton_3 = new JButton("Save");
 		
 		JButton btnNewButton_4 = new JButton("Cancel");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cancelView();
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -561,15 +570,15 @@ public class ItemEditorView extends JFrame {
 		JPanel panel_5 = new JPanel();
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel_2.createSequentialGroup()
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
 						.addComponent(pnl_textEditor, GroupLayout.PREFERRED_SIZE, 636, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel_1, 0, 0, Short.MAX_VALUE)
 						.addComponent(panel_5, 0, 0, Short.MAX_VALUE)
-						.addComponent(pnl_titleBar, GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
+						.addComponent(pnl_titleBar, GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+						.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
@@ -582,16 +591,17 @@ public class ItemEditorView extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(pnl_textEditor, GroupLayout.PREFERRED_SIZE, 293, GroupLayout.PREFERRED_SIZE)
+					.addComponent(pnl_textEditor, GroupLayout.PREFERRED_SIZE, 281, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(31, Short.MAX_VALUE))
 		);
 		
 		JLabel lblValueFor = new JLabel("Language Version");
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Identifier", "German", "English"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Identifier", "German", "English", "French", "Italian", "Spanish"}));
+		comboBox.setSelectedIndex(1);
 		
 		JLabel label_4 = new JLabel("<<icon>>");
 		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
@@ -628,5 +638,9 @@ public class ItemEditorView extends JFrame {
 			txtA_textInput.insert("<b>", txtA_textInput.getSelectionStart());
 			txtA_textInput.insert("</b>", txtA_textInput.getSelectionEnd());
 		}
+	}
+	
+	public void cancelView() {
+		this.dispose();
 	}
 }
