@@ -17,6 +17,8 @@ import core.entities.bricks.User;
  * @author Kevin Wann
  * @version 1.0
  * @datum 22.11.2016
+ * 
+ * @edit by Timo Röder
  */
 
 public class SqlReader {
@@ -24,7 +26,7 @@ public class SqlReader {
 	/**
 	 * DB Path for Testing
 	 */
-	File dbMain = new File("../db/db_matram_filled.accdb");
+	File dbMain = new File("db\\db_matram_filled.accdb");
 	/**
 	 * Config-Database (exists within the app-dir)
 	 */

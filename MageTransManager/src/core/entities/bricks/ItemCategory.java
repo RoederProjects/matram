@@ -6,6 +6,7 @@ package core.entities.bricks;
  * @author Timo Röder	
  * @version 1.0
  * @datum 24.11.2016
+ * @category brick
  */
 public class ItemCategory {
 

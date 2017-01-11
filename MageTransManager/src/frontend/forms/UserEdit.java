@@ -14,6 +14,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class UserEdit extends JFrame {
 
@@ -43,7 +46,7 @@ public class UserEdit extends JFrame {
 	 */
 	public UserEdit() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 306, 300);
+		setBounds(100, 100, 306, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,6 +70,7 @@ public class UserEdit extends JFrame {
 		JLabel lblUsergroup = new JLabel("Usergroup");
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Administrator", "Standard User", "Guest User"}));
 		
 		JLabel lblTeam = new JLabel("Team");
 		
@@ -77,6 +81,11 @@ public class UserEdit extends JFrame {
 		JButton btnSave = new JButton("Save");
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cancelForm();
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -135,5 +144,9 @@ public class UserEdit extends JFrame {
 					.addGap(7))
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+	
+	public void cancelForm() {
+		this.dispose();
 	}
 }

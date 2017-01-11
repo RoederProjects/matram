@@ -1,13 +1,14 @@
 package core.entities.service;
-import java.beans.Statement;
-import java.sql.Connection;
 
 import core.entities.utils.*;
 
+/**
+ * 
+ * @author Nicolas Mehl
+ *
+ */
 public class AuthService {
 	private SqlReader db;
-	private Statement statement;
-	private Connection con;
 	
 	public AuthService() {
 		db = new SqlReader();
