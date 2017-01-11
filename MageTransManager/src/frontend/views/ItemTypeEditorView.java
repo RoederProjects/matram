@@ -31,6 +31,8 @@ import java.awt.Point;
 import javax.swing.border.CompoundBorder;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ItemTypeEditorView extends JFrame {
 
@@ -143,18 +145,20 @@ public class ItemTypeEditorView extends JFrame {
 		panel_2.add(lblDescription);
 		
 		JTextArea txtrDeutscheTextesollte = new JTextArea();
+		txtrDeutscheTextesollte.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtrDeutscheTextesollte.setWrapStyleWord(true);
 		txtrDeutscheTextesollte.setLineWrap(true);
 		txtrDeutscheTextesollte.setBorder(new CompoundBorder(new LineBorder(new Color(0, 0, 0)), new EmptyBorder(2, 4, 2, 4)));
 		txtrDeutscheTextesollte.setColumns(15);
 		txtrDeutscheTextesollte.setRows(4);
 		txtrDeutscheTextesollte.setMargin(new Insets(2, 4, 2, 4));
-		txtrDeutscheTextesollte.setText("Deutsche Texte (sollte auch als Text-Inhalt Vorgabe dienen.) Und ausserdem blablalbalb asdsad asda sdngfdng jinfdgisdfb iasf bsdai fosdijg\u00FC er0i berpv rbgfbsdhvcbsad dbfhsdabf bsda fdvbsh whef df  asdas dghte ujg xcfsrduj v");
+		txtrDeutscheTextesollte.setText("Deutsche Texte - sollten als Inhalt Vorgabe dienen.");
 		txtrDeutscheTextesollte.setBackground(SystemColor.control);
 		txtrDeutscheTextesollte.setBounds(10, 125, 241, 74);
 		panel_2.add(txtrDeutscheTextesollte);
 		
 		JCheckBox chckbxActivated = new JCheckBox("Activated");
+		chckbxActivated.setSelected(true);
 		chckbxActivated.setBounds(109, 231, 97, 23);
 		panel_2.add(chckbxActivated);
 		
@@ -195,7 +199,16 @@ public class ItemTypeEditorView extends JFrame {
 		panel_3.add(btnNewButton_1);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cancelView();
+			}
+		});
 		btnCancel.setBounds(10, 11, 89, 23);
 		panel_3.add(btnCancel);
+	}
+	
+	public void cancelView() {
+		this.dispose();
 	}
 }

@@ -21,13 +21,13 @@ public class AuthFormHandler {
 		txtF_userName.setEnabled(false);
 		txtF_userPwd.setEnabled(false);
 		
-		AuthService authService = new AuthService(sel_store.getSelectedItem(), txtF_userName.getText(), txtF_userPwd.getPassword());
-		
-		if (authService.credCheck()) {
-			setUser(txtF_userName.getText());
-			
-			loginUser();
-		}
+		AuthService authService = new AuthService();
+		loginUser();
+//		if (authService.credCheck(txtF_userName.getText(), txtF_userPwd.getText())) {
+//			setUser(txtF_userName.getText());
+//			
+//			loginUser();
+//		}
 	}
 	
 	public void loginUser() {

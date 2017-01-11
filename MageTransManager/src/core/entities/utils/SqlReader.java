@@ -22,6 +22,10 @@ import core.entities.bricks.User;
 public class SqlReader {
 	
 	/**
+	 * DB Path for Testing
+	 */
+	File dbMain = new File("../db/db_matram_filled.accdb");
+	/**
 	 * Config-Database (exists within the app-dir)
 	 */
 	File dbCoreConfig = new File("db/core_config.accdb");
@@ -87,15 +91,19 @@ public class SqlReader {
 			e.printStackTrace();
 		}*/
 		
+		//Get DB Path
+		//statement = createStatement(dbCoreConfig);
+		
+		
 	}
 	
-	public Connection getConnection(File dbFile) {
+	public Connection getConnection(File dbFilePath) {
 		//File file = new File (absPathFilename);
-		System.out.println("Try access to " + dbFile.getAbsolutePath());
+		System.out.println("Try access to " + dbFilePath.getAbsolutePath());
 		
 		try {
 			// establish the connection with the DriverManager
-			conn = DriverManager.getConnection("jdbc:ucanaccess://" + dbFile.getAbsolutePath());
+			conn = DriverManager.getConnection("jdbc:ucanaccess://" + dbFilePath.getAbsolutePath());
 			
 			// create a statement to send requests
 			statement = conn.createStatement();
@@ -109,10 +117,10 @@ public class SqlReader {
 	}
 	
 	
-	public Statement createStatement() {
+	public Statement createStatement(File dbFilePath) {
 		try {
 			// create a statement to send requests
-			statement = getConnection(dbCoreConfig).createStatement();
+			statement = getConnection(dbFilePath).createStatement();
 	}
 		catch (SQLException e) {
 			closeDatabase();
