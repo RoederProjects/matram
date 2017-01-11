@@ -25,6 +25,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JMenuItem;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UserMgrView extends JFrame {
 
@@ -80,6 +82,11 @@ public class UserMgrView extends JFrame {
 		);
 		
 		JButton btnNewButton = new JButton("Add User");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new frontend.forms.UserEdit().setVisible(true);
+			}
+		});
 		
 		textField = new JTextField();
 		textField.setColumns(10);

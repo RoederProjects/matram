@@ -1,5 +1,13 @@
 package core.entities.bricks;
 
+/**
+ * Class UserTeam
+ * 
+ * @author Timo Röder	
+ * @version 1.0
+ * @datum 24.11.2016
+ * @category brick
+ */
 public class UserTeam {
 
 	private String id;

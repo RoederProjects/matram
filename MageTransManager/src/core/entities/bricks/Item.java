@@ -8,6 +8,7 @@ import java.io.File;
  * @author Timo Röder	
  * @version 1.0
  * @datum 24.11.2016
+ * @category brick
  */
 public class Item extends GroupItem {
 	

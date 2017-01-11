@@ -56,8 +56,8 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 /**
  * @author Timo Röder
- * {@docRoot}
- * @category
+ * @Version 1.0
+ * @category GUIFrame
  * 
  */
 public class MainView extends JFrame {

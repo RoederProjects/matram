@@ -1,5 +1,13 @@
 package core.entities.bricks;
 
+/**
+ * Class Store(ShopType)
+ * 
+ * @author Timo Röder	
+ * @version 1.0
+ * @datum 24.11.2016
+ * @category brick
+ */
 public class Store {
 
 	public String url;

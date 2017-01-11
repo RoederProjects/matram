@@ -1,9 +1,4 @@
-/*
- * 
- * Copyright (C) 2006 Enterprise Distributed Technologies Ltd
- * 
- * www.enterprisedt.com
- */
+
 package core.entities.utils;
 
 import com.enterprisedt.net.ftp.FTPException;
@@ -11,7 +6,7 @@ import com.enterprisedt.net.ftp.FileTransferClient;
 import java.io.IOException;
 
 /**
- * Class FtpClient handles Ftp-based Actions like connect to server,upload to server, change remote directory
+ * Class FtpClient handles ftp-based actions like connect to server,upload to server, change remote directory
  * 
  * @author Timo Röder	
  * @version 1.0
