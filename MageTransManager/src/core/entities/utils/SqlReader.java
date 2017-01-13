@@ -18,7 +18,7 @@ import core.entities.bricks.User;
  * @version 1.0
  * @datum 22.11.2016
  * 
- * @edit by Timo Röder
+ * @edit method conCheck() by Timo Röder
  */
 
 public class SqlReader {
