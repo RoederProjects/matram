@@ -6,7 +6,7 @@ import com.enterprisedt.net.ftp.FileTransferClient;
 import java.io.IOException;
 
 /**
- * Class FtpClient handles ftp-based actions like connect to server,upload to server, change remote directory
+ * Class FtpClient handles ftp-based actions like connect to webserver, upload to webserver, download from webserver, change remote directory
  * 
  * @author Timo Röder	
  * @version 1.0
@@ -16,6 +16,7 @@ import java.io.IOException;
 public class FtpClient {
 
     private String host;
+    private int port;
     private String username;
     private String password;
 
@@ -27,17 +28,18 @@ public class FtpClient {
      * @param ftpUser
      * @param ftpPwd
  */
-    public FtpClient(String ftpHost, String ftpUser, String ftpPwd) {
+    public FtpClient(String ftpHost, int ftpPort, String ftpUser, String ftpPwd) {
         
         /**
          * Init fields from constructor arguments
          */
         host = ftpHost;
+        port = ftpPort;
         username = ftpUser;
         password = ftpPwd;
        
         /**
-         * Init fields
+         * Init FileTransferClient with class fields
          */
         ftp = new FileTransferClient();
         try {
@@ -65,7 +67,7 @@ public class FtpClient {
     }
 
 /*******************************************************************************
- * public method changeDir
+ * public method changeDir (changes directory on remote-server)
  ******************************************************************************/
     public void changeDir(String dir) {
         try {
@@ -79,7 +81,7 @@ public class FtpClient {
     }
 
 /*******************************************************************************
- * public method upload
+ * public method upload 
  ******************************************************************************/    
     public void upload(String localFile, String remoteFile) {
         try {
